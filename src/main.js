@@ -74,7 +74,7 @@ async function onSearch(e) {
       });
     }
 
-    createGallery(hits, gallery);
+    createGallery(hits);
     // gallery.innerHTML = createGallery(hits);
     lightbox.refresh();
 
@@ -102,8 +102,8 @@ async function handleLoadeMore(e, searchBar, page) {
   }
 }
 
-function createGallery(hits, gallery) {
-  const markup = hits
+function createGallery(hits) {
+  hits
     .map(
       ({
         webformatURL,
@@ -113,8 +113,7 @@ function createGallery(hits, gallery) {
         views,
         comments,
         downloads,
-      }) => {
-        return `<li class="gallery-item">
+      }) => `<li class="gallery-item">
            <a class="gallery-link" href="${largeImageURL}">
           <img
             class="gallery-image"
@@ -148,10 +147,9 @@ function createGallery(hits, gallery) {
            </a>
 
       </li>
-      `;
-      }
+      `
     )
     .join('');
 
-  gallery.insertAdjacentElement('beforeend', markup);
+  gallery.insertAdjacentElement('beforeend', createGallery(hits));
 }
