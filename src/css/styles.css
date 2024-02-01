@@ -86,6 +86,7 @@ button:focus {
   flex-wrap: wrap;
   width: 1128px;
   gap: 24px;
+  margin-bottom: 32px;
 }
 
 .gallery-item {
@@ -131,10 +132,6 @@ button:focus {
   margin: 0 auto;
 }
 
-.hiden {
-  display: none;
-}
-
 .loader-text {
   color: #2e2f42;
 
@@ -157,6 +154,15 @@ button:focus {
   position: relative;
   transform: translateZ(0);
   animation: mltShdSpin 1.7s infinite ease, round 1.7s infinite ease;
+}
+
+.button-load-more {
+  display: block;
+  margin: 0 auto;
+}
+
+.is-hidden {
+  display: none;
 }
 
 @keyframes mltShdSpin {
