@@ -46,6 +46,7 @@ async function onSearch(e) {
   const form = e.currentTarget;
   searchBar = form.elements.search.value.trim();
   if (searchBar === '') {
+    searchBtn.disabled = false;
     return iziToast.show({
       message: 'Please add value!',
       messageColor: '#FAFAFB',
@@ -59,7 +60,6 @@ async function onSearch(e) {
     const { hits, totalHits } = await fetchImages(searchBar);
     loader.classList.remove('is-hidden');
     maxPage = Math.ceil(totalHits / 15);
-    console.log(hits);
 
     if (hits.length === 0) {
       iziToast.show({
