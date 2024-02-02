@@ -60,7 +60,7 @@ async function onSearch(e) {
     const { hits, totalHits } = await fetchImages(searchBar);
 
     maxPage = Math.ceil(totalHits / 15);
-    console.log(maxPage);
+    console.log(hits);
 
     if (hits.length === 0) {
       iziToast.show({
@@ -72,10 +72,8 @@ async function onSearch(e) {
         position: 'topRight',
       });
     } else {
-      if (maxPage === page) {
-        createGallery(hits);
-        lightbox.refresh();
-      }
+      createGallery(hits);
+      lightbox.refresh();
 
       loadMoreBtn.classList.remove('is-hidden');
       loadMoreBtn.addEventListener('click', handleLoadeMore);
