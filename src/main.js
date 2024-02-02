@@ -42,7 +42,6 @@ async function onSearch(e) {
   gallery.innerHTML = '';
   page = 1;
   searchBtn.disabled = true;
-  loader.classList.remove('is-hidden');
 
   const form = e.currentTarget;
   searchBar = form.elements.search.value.trim();
@@ -58,7 +57,7 @@ async function onSearch(e) {
 
   try {
     const { hits, totalHits } = await fetchImages(searchBar);
-
+    loader.classList.remove('is-hidden');
     maxPage = Math.ceil(totalHits / 15);
     console.log(hits);
 
@@ -98,6 +97,9 @@ async function handleLoadeMore(e) {
 
     createGallery(hits);
     lightbox.refresh();
+
+    const { height } = gallery.firstElementChild.getBoundingClientRect();
+    window.scrollBy(0, height * 2);
   } catch (error) {
     console.log(error);
   } finally {
