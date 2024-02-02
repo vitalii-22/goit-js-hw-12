@@ -106,6 +106,13 @@ async function handleLoadeMore(e) {
     loaderMore.classList.add('is-hidden');
     loadMoreBtn.classList.remove('is-hidden');
     if (maxPage === page) {
+      iziToast.show({
+        message: "We're sorry, but you've reached the end of search results.",
+        messageColor: '#FAFAFB',
+        messageSize: '16px',
+        backgroundColor: '#4a55eb',
+        position: 'topRight',
+      });
       loadMoreBtn.classList.add('is-hidden');
       loadMoreBtn.removeEventListener('click', handleLoadeMore);
     }
